@@ -7,10 +7,11 @@ int screenWidth = 1920, screenHeight = 1080;
 
 Vector2 pos;
 
+short int mat[54][54];
+hexagon casute[54];
+
 int main()
 {
-    bool mat[54][54];
-
     InitWindow(screenWidth, screenHeight - 95, "catan");
 
     SetTargetFPS(120);

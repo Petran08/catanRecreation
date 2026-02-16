@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <string>
 
-#define HEX_SIZE 100 //length of an edge
+#define HEX_SIZE 100.f //length of an edge
 
 class hexagon
 {
