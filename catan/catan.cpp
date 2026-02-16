@@ -22,7 +22,7 @@ int main()
 
         BeginDrawing();
 
-        ClearBackground(WHITE);
+        ClearBackground(BLACK);
 
         drawHexagon(pos, HEX_SIZE, GREEN);
 

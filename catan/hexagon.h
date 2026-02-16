@@ -1,5 +1,6 @@
 #pragma once
 #include <raylib.h>
+#include <string>
 
 #define HEX_SIZE 100 //length of an edge
 
@@ -7,5 +8,7 @@ class hexagon
 {
 public:
 	Vector2 pos;
+	std::string resource;//wood, wool, brick, hay, rock
+	short int diceRoll = 0;
 };
 
