@@ -8,7 +8,7 @@ class hexagon
 {
 public:
 	Vector2 pos;
-	std::string resource;//wood, wool, brick, hay, rock
+	std::string resource;//wood, wool, brick, hay, rock, none(dessert)
 	short int diceRoll = 0;
 };
 
