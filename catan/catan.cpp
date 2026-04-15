@@ -14,11 +14,11 @@ static std::random_device rd;
 static std::mt19937 gen(rd());
 
 short int mat[54][54];
-hexagon casute[20];
+hexagon casute[25];
 
-short int orderBigLayer[] = {1, 2, 3, 7, 12, 16, 19, 18, 17, 13, 8, 4};
-short int orderMediumLayer[] = { 5, 6, 11, 15, 14, 9 };
-short int rolls[18] = {8, 4, 11, 12, 9, 10, 8, 3, 6, 2, 5, 10, 3, 6, 5, 4, 9, 11}; // clockwise
+short int orderBigLayer[] = { 1, 2, 3, 7, 12, 16, 19, 18, 17, 13, 8, 4, -1, -1, -1 };//-1 for safety;
+short int orderMediumLayer[] = { 5, 6, 11, 15, 14, 9 , -1, -1, -1};//-1 for safety
+short int rolls[] = {8, 4, 11, 12, 9, 10, 8, 3, 6, 2, 5, 10, 3, 6, 5, 4, 9, 11}; // clockwise
 short int resource[] = {4, 4, 3, 4, 3};//wood, wool, brick, hay, rock
 
 void mapInit()
@@ -74,7 +74,7 @@ void mapInit()
             casute[orderBigLayer[i]].diceRoll = rolls[rollId++];
         }
     }
-    startHex /= 2;
+    startHex = min(5, startHex / 2);
     if (casute[orderMediumLayer[startHex]].resource != "none")
     {
         casute[orderMediumLayer[startHex]].diceRoll = rolls[rollId++];
@@ -88,7 +88,9 @@ void mapInit()
             casute[orderMediumLayer[i]].diceRoll = rolls[rollId++];
         }
     }
-    casute[10].diceRoll = 11;
+
+    if(casute[10].resource != "none")
+        casute[10].diceRoll = 11;
 
     for (int i = 1; i < 20; i++)
         cout << casute[i].diceRoll << ' ';
@@ -101,6 +103,8 @@ int main()
     InitWindow(screenWidth, screenHeight - 95, "catan");
 
     SetTargetFPS(120);
+
+    SetWindowPosition(0, 35);
 
     while(!WindowShouldClose())
     {
